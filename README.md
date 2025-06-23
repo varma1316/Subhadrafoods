@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Subhadra Foods - FOL (Flavours of Laddus)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive website for Subhadra Foods showcasing their traditional Indian laddus with WhatsApp integration for easy ordering.
 
-## Available Scripts
+## 🌿 About
 
-In the project directory, you can run:
+Subhadra Foods specializes in traditional Indian laddus made with pure, wholesome ingredients. This website showcases their signature products and subscription plans with direct WhatsApp integration for seamless customer interaction.
 
-### `npm start`
+## 🍬 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
+- **WhatsApp Integration**: Direct WhatsApp buttons for each product and subscription
+- **Modern UI**: Clean, professional design with traditional Indian aesthetics
+- **Product Showcase**: Detailed information about all 6 signature laddus
+- **Subscription Plans**: Weekly delivery subscription information
+- **Contact Information**: Easy access to phone, website, and WhatsApp
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (version 14 or higher)
+- npm (comes with Node.js)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository or navigate to the project directory
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `npm run eject`
+## 📱 WhatsApp Integration
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The website includes WhatsApp integration with pre-filled messages for each product:
+- Product-specific messages when clicking "Buy on WhatsApp"
+- General inquiry message for subscription and contact buttons
+- Direct link to WhatsApp number: +91 9945049567
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠️ Built With
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **React** - Frontend framework
+- **CSS3** - Styling and responsive design
+- **HTML5** - Semantic markup
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📦 Available Scripts
 
-## Learn More
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🎨 Design Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Color Scheme**: Green and brown tones reflecting natural, traditional themes
+- **Typography**: Clean, readable fonts with proper hierarchy
+- **Animations**: Subtle hover effects and transitions
+- **Mobile-First**: Responsive design optimized for all screen sizes
 
-### Code Splitting
+## 📞 Contact Information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Phone/WhatsApp**: 9945049567
+- **Website**: www.subhadrafoods.com, www.subhadrafoods.in
+- **Delivery Area**: Bangalore
 
-### Analyzing the Bundle Size
+## 📄 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project is created for Subhadra Foods. All rights reserved.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Subhadra Foods - Pure. Wholesome. Rooted in Tradition.**
