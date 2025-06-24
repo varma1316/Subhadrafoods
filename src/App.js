@@ -145,7 +145,7 @@ function App() {
       tags: "(Bone Strength | Digestive Health | Desi Ghee Rich)",
       description: "This traditional urad dal laddu is made with pure cow ghee and jaggery—a nourishing snack packed with strength and heritage.",
       highlight: "👉 A heritage recipe for growing children and aging adults alike.",
-      image: "/images/products/urad-shakti.png",
+      image: "/images/products/urad-shakti.jpg",
       price: 100
     },
     {
@@ -163,7 +163,7 @@ function App() {
       tags: "(Soft | Iron & Calcium Rich)",
       description: "A soft, melt-in-the-mouth laddu made with slow-roasted sesame seeds and naturally sweet jaggery.",
       highlight: "👉 Rich in iron, calcium, and warmth—an ideal winter treat for daily nourishment.",
-      image: "/images/products/til-power.png",
+      image: "/images/products/Till-power.jpg",
       price: 100
     }
   ];
@@ -339,6 +339,20 @@ function App() {
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <section className="reviews">
+        <div className="container">
+          <h2 className="section-title">Customer Reviews</h2>
+          <div className="review-grid">
+            <div className="review-image-placeholder">Image 1</div>
+            <div className="review-image-placeholder">Image 2</div>
+            <div className="review-image-placeholder">Image 3</div>
+            <div className="review-image-placeholder">Image 4</div>
+            <div className="review-image-placeholder">Image 5</div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section className="contact">
         <div className="container">
@@ -372,7 +386,7 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2024 Subhadra Foods - FOL (Flavours of Laddus). All rights reserved.</p>
+          <p>&copy; 2025 Subhadra Foods - FOL (Flavours of Laddus). All rights reserved.</p>
         </div>
       </footer>
     </div>
