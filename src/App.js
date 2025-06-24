@@ -119,7 +119,7 @@ function App() {
       description: "A royal blend of almonds, cashews, pistachios, pumpkin seeds, watermelon seeds, and dates—all bound together with pure desi cow ghee.",
       highlight: "👉 Naturally sweetened, rich in nutrients, and perfect for guilt-free snacking.",
       image: "/images/products/shuddh-dryfruit.jpg",
-      price: 100
+      price: 350
     },
     {
       id: 2,
@@ -128,7 +128,7 @@ function App() {
       description: "A soft and nourishing laddu packed with cashews, almonds, pumpkin seeds, and flaxseeds, this laddu supports heart and digestive health.",
       highlight: "👉 Sweetened with jaggery and blended with tradition for a superfood twist.",
       image: "/images/products/flax-power1.jpg",
-      price: 100
+      price: 250
     },
     {
       id: 3,
@@ -137,7 +137,7 @@ function App() {
       description: "A unique fusion of roasted peanuts, popped makhana (foxnuts), and golden jaggery—delivering a protein-rich, energy-boosting snack.",
       highlight: "👉 Soft, delicious, and ideal for snacking anytime—no crunch, just melt-in-mouth goodness.",
       image: "/images/products/makhana-peanut.jpg",
-      price: 100
+      price: 200
     },
     {
       id: 4,
@@ -146,7 +146,7 @@ function App() {
       description: "This traditional urad dal laddu is made with pure cow ghee and jaggery—a nourishing snack packed with strength and heritage.",
       highlight: "👉 A heritage recipe for growing children and aging adults alike.",
       image: "/images/products/urad-shakti.jpg",
-      price: 100
+      price: 200
     },
     {
       id: 5,
@@ -155,7 +155,7 @@ function App() {
       description: "Laden with chopped figs (anjeer) and premium dry fruits, these laddus are naturally sweet, chewy, and rich in fiber and iron.",
       highlight: "👉 A naturally sweet and iron-rich treat, perfect for daily nutrition.",
       image: "/images/products/anjeer-bliss.png",
-      price: 100
+      price: 400
     },
     {
       id: 6,
@@ -164,7 +164,7 @@ function App() {
       description: "A soft, melt-in-the-mouth laddu made with slow-roasted sesame seeds and naturally sweet jaggery.",
       highlight: "👉 Rich in iron, calcium, and warmth—an ideal winter treat for daily nourishment.",
       image: "/images/products/Till-power.jpg",
-      price: 100
+      price: 150
     }
   ];
 
