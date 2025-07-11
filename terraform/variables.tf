@@ -14,5 +14,8 @@ variable "cluster_name" {
   type        = string
   default     = "my-gke-cluster"
 }
-
+variable "credentials_file" {
+  description = "Path to the GCP service account credentials file"
+  type        = string
+}
 
