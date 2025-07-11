@@ -33,9 +33,7 @@ pipeline {
     }
 
     stage('Provision Infra with Terraform') {
-       when {
-    changeset "**/terraform/**"
-  }
+       
       steps {
         dir('terraform') {
           withCredentials([file(credentialsId: 'gcp-key', variable: 'GOOGLE_CREDENTIALS')]) {
