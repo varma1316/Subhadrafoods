@@ -15,7 +15,4 @@ variable "cluster_name" {
   default     = "my-gke-cluster"
 }
 
-variable "credentials_file" {
-  description = "Path to the GCP service account key file"
-  type        = string
-}
+

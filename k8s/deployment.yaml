@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subhadrafoods-deployment
+  labels:
+    app: subhadrafoods
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: subhadrafoods
+  template:
+    metadata:
+      labels:
+        app: subhadrafoods
+    spec:
+      containers:
+      - name: subhadrafoods-container
+        image: varma8k8k/subhadrafoods:latest
+        ports:
+        - containerPort: 80
