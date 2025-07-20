@@ -305,6 +305,32 @@ body {
   background: #1976d2;
 }
 
+.pickles-section {
+  background: #f5f5f5;
+  position: relative;
+}
+
+.pickles-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  pointer-events: none;
+}
+
+.pickles-section .section-title {
+  color: #1976d2;
+  -webkit-text-fill-color: #1976d2;
+  background: none;
+}
+
+.pickles-section .section-title::after {
+  background: #1976d2;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -446,6 +472,52 @@ body {
   color: #666;
   font-weight: 400;
   letter-spacing: 0.01em;
+}
+
+.product-price-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-dropdown {
+  background: white;
+  color: #1976d2;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border: 2px solid #e3f2fd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  outline: none;
+  letter-spacing: 0.01em;
+}
+
+.quantity-dropdown:hover {
+  border-color: #1976d2;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.2);
+}
+
+.quantity-dropdown:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.quantity-dropdown option {
+  background: white;
+  color: #1976d2;
+  font-weight: 500;
 }
 
 .laddu-svg {
@@ -884,6 +956,15 @@ body {
     max-width: 300px;
     justify-content: center;
   }
+  
+  .product-price-container {
+    gap: 12px;
+  }
+  
+  .quantity-dropdown {
+    font-size: 0.9rem;
+    padding: 7px 11px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -905,6 +986,17 @@ body {
   
   .product-card {
     padding: 20px;
+  }
+  
+  .product-price-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .quantity-dropdown {
+    font-size: 0.85rem;
+    padding: 6px 10px;
   }
   
   .whatsapp-btn {

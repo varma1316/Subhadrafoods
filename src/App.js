@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './App.css';
 
 // Food/Brand Icon Component
@@ -103,15 +104,42 @@ function ProductPlaceholderIcon({ size = 32, style = {} }) {
 }
 
 function App() {
-  const handleWhatsAppClick = (productName = '') => {
+  const [selectedLadduQuantities, setSelectedLadduQuantities] = useState({});
+  const [selectedPickleQuantities, setSelectedPickleQuantities] = useState({});
+
+  const handleWhatsAppClick = (productName = '', quantity = '250gm') => {
     const message = productName 
-      ? `Hi! I'm interested in buying ${productName}. Can you please provide more details?`
+      ? `Hi! I'm interested in buying ${productName} (${quantity}). Can you please provide more details?`
       : 'Hi! I\'m interested in your laddus. Can you please provide more details?';
     const whatsappUrl = `https://wa.me/919945049567?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
-  const products = [
+  const handleLadduQuantityChange = (productId, quantity) => {
+    setSelectedLadduQuantities(prev => ({
+      ...prev,
+      [productId]: quantity
+    }));
+  };
+
+  const handlePickleQuantityChange = (productId, quantity) => {
+    setSelectedPickleQuantities(prev => ({
+      ...prev,
+      [productId]: quantity
+    }));
+  };
+
+  const getPriceForQuantity = (product, quantity) => {
+    const basePrice = product.price; // 250gm price
+    const quantityMap = {
+      '250gm': basePrice,
+      '500gm': Math.round(basePrice * 2), // 10% discount for bulk
+      '1kg': Math.round(basePrice * 4)    // 20% discount for bulk
+    };
+    return quantityMap[quantity] || basePrice;
+  };
+
+  const laddus = [
     {
       id: 1,
       name: "Shuddh Dryfruit Delight",
@@ -146,7 +174,7 @@ function App() {
       description: "This traditional urad dal laddu is made with pure cow ghee and jaggery—a nourishing snack packed with strength and heritage.",
       highlight: "👉 A heritage recipe for growing children and aging adults alike.",
       image: "/images/products/urad-shakti.jpg",
-      price: 200
+      price: 175
     },
     {
       id: 5,
@@ -164,7 +192,64 @@ function App() {
       description: "A soft, melt-in-the-mouth laddu made with slow-roasted sesame seeds and naturally sweet jaggery.",
       highlight: "👉 Rich in iron, calcium, and warmth—an ideal winter treat for daily nourishment.",
       image: "/images/products/Till-power.jpg",
-      price: 150
+      price: 175
+    }
+  ];
+
+  const pickles = [
+    {
+      id: 1,
+      name: "Chicken Pickle",
+      tags: "(Traditional | Spicy | Protein-Rich)",
+      description: "A bold and flavorful pickle made from tender chicken chunks, slow-cooked with traditional Indian spices.This non-vegetarian delicacy adds a fiery twist to your meals and pairs perfectly with rice, rotis, or even snacks. Every bite carries the warmth of home-style cooking and authentic regional taste.",
+      highlight: "👉 Prepared with premium cuts of chicken and hand-roasted spices, following a cherished family recipe for irresistible flavor.",
+      image: "/images/products/Chicken-pickle.png",
+      price: 250
+    },
+    {
+      id: 2,
+      name: "Prawn Pickle",
+      tags: "(Coastal | Tangy | Spicy)",
+      description: "A coastal favorite made with succulent prawns marinated in a blend of fiery spices, garlic, and tangy tamarind. This pickle delivers a burst of bold flavors and a hint of sea breeze in every spoonful. Perfect as a side with steamed rice, dosas, or even curd rice",
+      highlight: "👉 Crafted using fresh prawns and traditional coastal spices for an authentic seafood pickle experience.",
+      image: "/images/products/Prawns-pickle.png",
+      price: 330
+    },
+    {
+      id: 3,
+      name: "Mixed Vegetable Pickle",
+      tags: "(Assorted | Nutritious | Healthy)",
+      description: "A vibrant medley of seasonal vegetables like carrots, cauliflower, and green chilies, pickled with mustard, turmeric, and traditional spices. This tangy, crunchy pickle is both wholesome and delicious — a perfect companion to any Indian meal.  Ideal as a flavorful side with rice",
+      highlight: "👉 Perfect blend of nutrition and taste in every bite.",
+      image: "/images/products/mix-veg-pickle.jpg",
+      price: 125
+    },
+    {
+      id: 4,
+      name: "Green Chilli, Cauliflower Pickle",
+      tags: "(Spicy | Crunchy | Seasonal Delight)",
+      description: "A bold fusion of crunchy cauliflower florets and fiery green chillies, blended with traditional Indian spices and mustard oil. This mixed pickle brings together heat and texture in perfect harmony — ideal as a flavorful side with rice, roti, or curd rice.",
+      highlight: "👉 Made using fresh, seasonal produce and a time-tested spice blend for an irresistible, spicy crunch in every bite.",
+      image: "/images/products/g-chilli-Cauliflower-p.jpg",
+      price: 125
+    },
+    {
+      id: 5,
+      name: "Gongura Prawn Pickle",
+      tags: "(Andhra Special | Tangy | Spicy Seafood)",
+      description: "A fiery Andhra delicacy where tender prawns are cooked with gongura (sorrel leaves), known for their signature tanginess. Combined with robust spices, this pickle delivers a punchy mix of sour and spice — a treat for lovers of bold coastal flavors.",
+      highlight: "👉 Authentic Andhra-style prawn pickle enriched with farm-fresh gongura leaves and hand-ground spices for a truly regional experience.",
+      image: "/images/products/gongura-prawn-p.jpg",
+      price: 350
+    },
+    {
+      id: 6,
+      name: "Gongura Chicken Pickle",
+      tags: "(Andhra Special | Tangy | High-Protein)",
+      description: "A mouthwatering fusion of tender chicken and tangy gongura (sorrel) leaves, cooked with a rich blend of Andhra spices. This unique pickle brings together the juicy texture of chicken and the signature sourness of gongura — a perfect match for rice, dosa, or idli.",
+      highlight: "👉 Prepared using locally sourced gongura and premium chicken, slow-cooked to absorb deep, authentic Andhra flavors.",
+      image: "/images/products/gongura-chicken-p.jpg",
+      price: 250
     }
   ];
 
@@ -178,6 +263,7 @@ function App() {
             <div className="brand-text">
               <h1 className="brand">Subhadra Foods</h1>
               <p className="tagline">FOL – Flavours of Laddus</p>
+              <p className="tagline">FOP – Flavours of Pickles</p>
               <p className="subtitle">Pure. Wholesome. Rooted in Tradition.</p>
             </div>
           </div>
@@ -188,15 +274,15 @@ function App() {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h2 className="hero-title"><FoodIcon size={32} style={{verticalAlign:'middle',marginRight:8}} />Presenting Our Signature Laddus</h2>
-            <p className="hero-description">Discover the authentic taste of traditional Indian laddus, made with pure ingredients and love.</p>
+            <h2 className="hero-title"><FoodIcon size={32} style={{verticalAlign:'middle',marginRight:8}} />Presenting Our Signature Collection</h2>
+            <p className="hero-description">Discover the authentic taste of traditional Indian laddus (FOL) and pickles (FOP), made with pure ingredients and love.</p>
             <div className="hero-cta">
-              <button 
-                className="cta-btn primary"
-                onClick={() => document.querySelector('.products').scrollIntoView({ behavior: 'smooth' })}
-              >
-                <ExploreIcon size={22} style={{verticalAlign:'middle',marginRight:8}} />Explore Our Laddus
-              </button>
+                              <button 
+                  className="cta-btn primary"
+                  onClick={() => document.querySelector('.products').scrollIntoView({ behavior: 'smooth' })}
+                >
+                  <ExploreIcon size={22} style={{verticalAlign:'middle',marginRight:8}} />Explore Our Collection
+                </button>
               <button 
                 className="cta-btn secondary"
                 onClick={() => handleWhatsAppClick()}
@@ -208,12 +294,12 @@ function App() {
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Laddus Section */}
       <section className="products">
         <div className="container">
-          <h2 className="section-title"><CollectionIcon size={28} style={{verticalAlign:'middle',marginRight:8}} />Our Signature Collection</h2>
+          <h2 className="section-title"><CollectionIcon size={28} style={{verticalAlign:'middle',marginRight:8}} />Flavours of Laddus (FOL)</h2>
           <div className="product-grid">
-            {products.map((product) => (
+            {laddus.map((product) => (
               <div key={product.id} className="product-card">
                 <div className="product-image-container">
                   <img 
@@ -230,15 +316,83 @@ function App() {
                   </div>
                 </div>
                 <h3 className="product-title">{product.id}. {product.name}</h3>
-                <div className="product-price">
-                  ₹{product.price} <span className="weight">250gm</span>
+                <div className="product-price-container">
+                  <div className="product-price">
+                    ₹{getPriceForQuantity(product, selectedLadduQuantities[product.id] || '250gm')} 
+                    <span className="weight">{selectedLadduQuantities[product.id] || '250gm'}</span>
+                  </div>
+                  <div className="quantity-selector">
+                    <select 
+                      value={selectedLadduQuantities[product.id] || '250gm'}
+                      onChange={(e) => handleLadduQuantityChange(product.id, e.target.value)}
+                      className="quantity-dropdown"
+                    >
+                      <option value="250gm">250gm</option>
+                      <option value="500gm">500gm</option>
+                      <option value="1kg">1kg</option>
+                    </select>
+                  </div>
                 </div>
                 <p className="product-tags">{product.tags}</p>
                 <p className="product-description">{product.description}</p>
                 <p className="product-highlight">{product.highlight}</p>
                 <button 
                   className="whatsapp-btn"
-                  onClick={() => handleWhatsAppClick(product.name)}
+                  onClick={() => handleWhatsAppClick(product.name, selectedLadduQuantities[product.id] || '250gm')}
+                >
+                  📱 Buy on WhatsApp
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pickles Section */}
+      <section className="products pickles-section">
+        <div className="container">
+          <h2 className="section-title"><CollectionIcon size={28} style={{verticalAlign:'middle',marginRight:8}} />Flavours of Pickles (FOP)</h2>
+          <div className="product-grid">
+            {pickles.map((product) => (
+              <div key={product.id} className="product-card">
+                <div className="product-image-container">
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    className="product-image"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                  <div className="product-image-placeholder">
+                    <ProductPlaceholderIcon size={48} />
+                  </div>
+                </div>
+                <h3 className="product-title">{product.id}. {product.name}</h3>
+                <div className="product-price-container">
+                  <div className="product-price">
+                    ₹{getPriceForQuantity(product, selectedPickleQuantities[product.id] || '250gm')} 
+                    <span className="weight">{selectedPickleQuantities[product.id] || '250gm'}</span>
+                  </div>
+                  <div className="quantity-selector">
+                    <select 
+                      value={selectedPickleQuantities[product.id] || '250gm'}
+                      onChange={(e) => handlePickleQuantityChange(product.id, e.target.value)}
+                      className="quantity-dropdown"
+                    >
+                      <option value="250gm">250gm</option>
+                      <option value="500gm">500gm</option>
+                      <option value="1kg">1kg</option>
+                    </select>
+                  </div>
+                </div>
+                <p className="product-tags">{product.tags}</p>
+                <p className="product-description">{product.description}</p>
+                <p className="product-highlight">{product.highlight}</p>
+                <button 
+                  className="whatsapp-btn"
+                  onClick={() => handleWhatsAppClick(product.name, selectedPickleQuantities[product.id] || '250gm')}
                 >
                   📱 Buy on WhatsApp
                 </button>
@@ -252,18 +406,19 @@ function App() {
       <section className="subscription">
         <div className="container">
           <h2 className="section-title"><SubscriptionIcon size={28} style={{verticalAlign:'middle',marginRight:8}} />Subscription Plan</h2>
-          <p className="subscription-subtitle">Fresh Laddus Delivered Weekly – Just the Way You Like It!</p>
+          <p className="subscription-subtitle">Fresh Laddus & Pickles Delivered Weekly – Just the Way You Like It!</p>
           
           <div className="subscription-content">
             <div className="subscription-info">
               <h3>🧁 What's the Plan?</h3>
               <p>Subscribe to 1 kg per month, and we'll deliver</p>
-              <p>👉 250 grams of fresh laddus every week – right to your doorstep!</p>
+              <p>👉 250 grams of fresh laddus or pickles every week – right to your doorstep!</p>
               <p>🌀 Choose "Assorted" for a weekly surprise – a new variety every delivery!</p>
               
               <h4>💰 Pricing Example: (Customizable)</h4>
               <ul>
-                <li>₹XXX for 1kg/month (250g x 4 deliveries)</li>
+                <li>₹XXX for 1kg/month (250g x 4 deliveries) - Laddus or Pickles</li>
+                <li>₹XXX for 1kg/month (250g x 4 deliveries) - Mixed (Laddus + Pickles)</li>
                 <li>Free delivery in local areas</li>
                 <li>Cancel any time after the first month</li>
               </ul>
@@ -292,7 +447,7 @@ function App() {
             </div>
             <div className="benefit-item">
               <span className="benefit-icon">✅</span>
-              <p>Assorted Varieties – Enjoy a new flavour every week from our FOL collection</p>
+              <p>Assorted Varieties – Enjoy a new flavour every week from our FOL & FOP collections</p>
             </div>
             <div className="benefit-item">
               <span className="benefit-icon">✅</span>
@@ -304,7 +459,7 @@ function App() {
             </div>
             <div className="benefit-item">
               <span className="benefit-icon">✅</span>
-              <p>Energy-Rich, Immunity-Boosting Snacks – Ideal for lunchboxes, tea-time, or evening hunger pangs</p>
+              <p>Energy-Rich Laddus & Immunity-Boosting Pickles – Ideal for lunchboxes, tea-time, or evening hunger pangs</p>
             </div>
           </div>
         </div>
@@ -339,7 +494,7 @@ function App() {
         </div>
       </section>
 
-      {/* Reviews Section */}
+      {/* Reviews Section
       <section className="reviews">
         <div className="container">
           <h2 className="section-title">Customer Reviews</h2>
@@ -351,7 +506,7 @@ function App() {
             <div className="review-image-placeholder">Image 5</div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
       <section className="contact">
@@ -386,7 +541,7 @@ function App() {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2025 Subhadra Foods - FOL (Flavours of Laddus). All rights reserved.</p>
+          <p>&copy; 2025 Subhadra Foods - FOL (Flavours of Laddus) & FOP (Flavours of Pickles). All rights reserved.</p>
         </div>
       </footer>
     </div>
